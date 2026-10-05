@@ -1,8 +1,10 @@
 const loading = document.querySelector('.modal__overlay--loading');
 const success = document.querySelector('.modal__overlay--success');
+const scaleFactor = 1 / 20;
 let isModalOpen = false;
 let isDarkMode = false;
-const scaleFactor = 1 / 20;
+
+
 
 
 
@@ -12,10 +14,11 @@ function moveBackground(event) {
     const x = event.clientX * scaleFactor;
     const y = event.clientY * scaleFactor;
 
+
     for (let i = 0; i < shapes.length; i++) {
         const isOdd = i % 2 !== 0
         const boolInt = isOdd ? -1 : 1
-        console.log(isOdd);
+        //console.log(isOdd);
         shapes[i].style.transform = `translate(${x * boolInt}px, ${y * boolInt}px)`
     }
 }
@@ -24,7 +27,7 @@ function moveBackground(event) {
 function contact(event) {
     // prevent the default behavior of the form submission
     event.preventDefault();
-    console.log('this worked')
+    //console.log('this worked')
     // show the appropriate overlay for the loading and success states
     loading.classList += " modal__overlay--visible";
 
@@ -36,10 +39,9 @@ function contact(event) {
     // )
     setTimeout(() => {
         try {
-            throw new Error("Simulated EmailJS network failure");
             loading.classList.remove("modal__overlay--visible");
             success.classList += " modal__overlay--visible";
-            console.log('it worked')
+            //console.log('it worked')
         }
 
         catch (error) {
